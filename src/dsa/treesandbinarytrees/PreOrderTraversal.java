@@ -2,8 +2,8 @@ package dsa.treesandbinarytrees;
 
 import java.util.ArrayList;
 
-//left->right->root
-public class postOrderTraversal {
+//root->left->right
+public class PreOrderTraversal {
 
     static class Node{
 
@@ -37,24 +37,24 @@ public class postOrderTraversal {
         root.right.right = new Node(6);
 
         ArrayList<Integer> result = new ArrayList<>();
-        postOrder(root,result);
+        preOrder(root,result);
 
         System.out.println(result);
 
     }
 
-    private static void postOrder(Node node, ArrayList<Integer> result) {
+    private static void preOrder(Node node, ArrayList<Integer> result) {
 
         if(node == null) return;
 
-        // Traverse the left subtree first
-        postOrder(node.left,result);
-
-        // Traverse the right subtree last
-        postOrder(node.right,result);
-
         // Visit the current node
         result.add(node.data);
+
+        // Traverse the left subtree first
+        preOrder(node.left,result);
+
+        // Traverse the right subtree last
+        preOrder(node.right,result);
 
     }
 }
